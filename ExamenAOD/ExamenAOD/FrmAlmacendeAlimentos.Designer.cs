@@ -40,13 +40,10 @@ namespace ExamenAOD
             this.lbProveedor = new System.Windows.Forms.Label();
             this.lbFecha = new System.Windows.Forms.Label();
             this.lbExistencia = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.txtExistencia = new System.Windows.Forms.TextBox();
+            this.lvProductos = new System.Windows.Forms.ListView();
             this.cId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cNombre = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cPrecio = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -54,6 +51,13 @@ namespace ExamenAOD
             this.cMedida = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cFecha = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cProveedor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.txtMedida = new System.Windows.Forms.TextBox();
+            this.txtFecha = new System.Windows.Forms.TextBox();
+            this.lbId = new System.Windows.Forms.Label();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.txtPorFecha = new System.Windows.Forms.TextBox();
+            this.cbProveedor = new System.Windows.Forms.ComboBox();
+            this.cbPorProveedor = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnLeer
@@ -67,6 +71,7 @@ namespace ExamenAOD
             this.btnLeer.TabIndex = 0;
             this.btnLeer.Text = "Leer Archivo";
             this.btnLeer.UseVisualStyleBackColor = false;
+            this.btnLeer.Click += new System.EventHandler(this.btnLeer_Click);
             // 
             // btnEscribir
             // 
@@ -79,42 +84,46 @@ namespace ExamenAOD
             this.btnEscribir.TabIndex = 1;
             this.btnEscribir.Text = "Escribir Archivo";
             this.btnEscribir.UseVisualStyleBackColor = false;
+            this.btnEscribir.Click += new System.EventHandler(this.btnEscribir_Click);
             // 
             // btnProveedor
             // 
             this.btnProveedor.BackColor = System.Drawing.Color.Snow;
             this.btnProveedor.Font = new System.Drawing.Font("Century Schoolbook", 9F, System.Drawing.FontStyle.Bold);
             this.btnProveedor.ForeColor = System.Drawing.Color.LightCoral;
-            this.btnProveedor.Location = new System.Drawing.Point(369, 397);
+            this.btnProveedor.Location = new System.Drawing.Point(1093, 395);
             this.btnProveedor.Name = "btnProveedor";
-            this.btnProveedor.Size = new System.Drawing.Size(152, 82);
+            this.btnProveedor.Size = new System.Drawing.Size(207, 46);
             this.btnProveedor.TabIndex = 2;
             this.btnProveedor.Text = "Datos por Proveedor";
             this.btnProveedor.UseVisualStyleBackColor = false;
+            this.btnProveedor.Click += new System.EventHandler(this.btnProveedor_Click);
             // 
             // btnFecha
             // 
             this.btnFecha.BackColor = System.Drawing.Color.Snow;
             this.btnFecha.Font = new System.Drawing.Font("Century Schoolbook", 9F, System.Drawing.FontStyle.Bold);
             this.btnFecha.ForeColor = System.Drawing.Color.LightCoral;
-            this.btnFecha.Location = new System.Drawing.Point(541, 397);
+            this.btnFecha.Location = new System.Drawing.Point(1093, 466);
             this.btnFecha.Name = "btnFecha";
-            this.btnFecha.Size = new System.Drawing.Size(152, 82);
+            this.btnFecha.Size = new System.Drawing.Size(207, 58);
             this.btnFecha.TabIndex = 3;
             this.btnFecha.Text = "Datos por Fecha de Caducidad";
             this.btnFecha.UseVisualStyleBackColor = false;
+            this.btnFecha.Click += new System.EventHandler(this.btnFecha_Click);
             // 
             // btnPorcentaje
             // 
             this.btnPorcentaje.BackColor = System.Drawing.Color.Snow;
             this.btnPorcentaje.Font = new System.Drawing.Font("Century Schoolbook", 9F, System.Drawing.FontStyle.Bold);
             this.btnPorcentaje.ForeColor = System.Drawing.Color.LightCoral;
-            this.btnPorcentaje.Location = new System.Drawing.Point(713, 397);
+            this.btnPorcentaje.Location = new System.Drawing.Point(371, 397);
             this.btnPorcentaje.Name = "btnPorcentaje";
             this.btnPorcentaje.Size = new System.Drawing.Size(152, 82);
             this.btnPorcentaje.TabIndex = 4;
             this.btnPorcentaje.Text = "Porcentaje de los Proveedores";
             this.btnPorcentaje.UseVisualStyleBackColor = false;
+            this.btnPorcentaje.Click += new System.EventHandler(this.btnPorcentaje_Click);
             // 
             // lbNombre
             // 
@@ -182,68 +191,37 @@ namespace ExamenAOD
             this.lbExistencia.TabIndex = 10;
             this.lbExistencia.Text = "Existencia del Producto:";
             // 
-            // textBox1
+            // txtNombre
             // 
-            this.textBox1.BackColor = System.Drawing.Color.Snow;
-            this.textBox1.Font = new System.Drawing.Font("Century Schoolbook", 9F);
-            this.textBox1.Location = new System.Drawing.Point(313, 72);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(222, 26);
-            this.textBox1.TabIndex = 11;
+            this.txtNombre.BackColor = System.Drawing.Color.Snow;
+            this.txtNombre.Font = new System.Drawing.Font("Century Schoolbook", 9F);
+            this.txtNombre.Location = new System.Drawing.Point(313, 72);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(222, 26);
+            this.txtNombre.TabIndex = 11;
             // 
-            // textBox2
+            // txtPrecio
             // 
-            this.textBox2.BackColor = System.Drawing.Color.Snow;
-            this.textBox2.Font = new System.Drawing.Font("Century Schoolbook", 9F);
-            this.textBox2.Location = new System.Drawing.Point(313, 118);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(222, 26);
-            this.textBox2.TabIndex = 12;
+            this.txtPrecio.BackColor = System.Drawing.Color.Snow;
+            this.txtPrecio.Font = new System.Drawing.Font("Century Schoolbook", 9F);
+            this.txtPrecio.Location = new System.Drawing.Point(313, 118);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(222, 26);
+            this.txtPrecio.TabIndex = 12;
             // 
-            // textBox3
+            // txtExistencia
             // 
-            this.textBox3.BackColor = System.Drawing.Color.Snow;
-            this.textBox3.Font = new System.Drawing.Font("Century Schoolbook", 9F);
-            this.textBox3.Location = new System.Drawing.Point(313, 166);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(222, 26);
-            this.textBox3.TabIndex = 13;
+            this.txtExistencia.BackColor = System.Drawing.Color.Snow;
+            this.txtExistencia.Font = new System.Drawing.Font("Century Schoolbook", 9F);
+            this.txtExistencia.Location = new System.Drawing.Point(313, 166);
+            this.txtExistencia.Name = "txtExistencia";
+            this.txtExistencia.Size = new System.Drawing.Size(222, 26);
+            this.txtExistencia.TabIndex = 13;
             // 
-            // textBox4
+            // lvProductos
             // 
-            this.textBox4.BackColor = System.Drawing.Color.Snow;
-            this.textBox4.Font = new System.Drawing.Font("Century Schoolbook", 9F);
-            this.textBox4.Location = new System.Drawing.Point(313, 317);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(222, 26);
-            this.textBox4.TabIndex = 14;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.BackColor = System.Drawing.Color.Snow;
-            this.comboBox1.Font = new System.Drawing.Font("Century Schoolbook", 9F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Pieza",
-            "Kg"});
-            this.comboBox1.Location = new System.Drawing.Point(313, 216);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(222, 26);
-            this.comboBox1.TabIndex = 15;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.Color.Snow;
-            this.dateTimePicker1.Font = new System.Drawing.Font("Century Schoolbook", 9F);
-            this.dateTimePicker1.Location = new System.Drawing.Point(313, 267);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(222, 26);
-            this.dateTimePicker1.TabIndex = 16;
-            // 
-            // listView1
-            // 
-            this.listView1.BackColor = System.Drawing.Color.Snow;
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvProductos.BackColor = System.Drawing.Color.Snow;
+            this.lvProductos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.cId,
             this.cNombre,
             this.cPrecio,
@@ -251,14 +229,14 @@ namespace ExamenAOD
             this.cMedida,
             this.cFecha,
             this.cProveedor});
-            this.listView1.Font = new System.Drawing.Font("Century Schoolbook", 7.8F);
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(588, 72);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(712, 281);
-            this.listView1.TabIndex = 17;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.lvProductos.Font = new System.Drawing.Font("Century Schoolbook", 7.8F);
+            this.lvProductos.HideSelection = false;
+            this.lvProductos.Location = new System.Drawing.Point(588, 72);
+            this.lvProductos.Name = "lvProductos";
+            this.lvProductos.Size = new System.Drawing.Size(712, 281);
+            this.lvProductos.TabIndex = 17;
+            this.lvProductos.UseCompatibleStateImageBehavior = false;
+            this.lvProductos.View = System.Windows.Forms.View.Details;
             // 
             // cId
             // 
@@ -294,19 +272,102 @@ namespace ExamenAOD
             this.cProveedor.Text = "Proveedor";
             this.cProveedor.Width = 84;
             // 
+            // txtMedida
+            // 
+            this.txtMedida.BackColor = System.Drawing.Color.Snow;
+            this.txtMedida.Font = new System.Drawing.Font("Century Schoolbook", 9F);
+            this.txtMedida.Location = new System.Drawing.Point(313, 216);
+            this.txtMedida.Name = "txtMedida";
+            this.txtMedida.Size = new System.Drawing.Size(222, 26);
+            this.txtMedida.TabIndex = 18;
+            // 
+            // txtFecha
+            // 
+            this.txtFecha.BackColor = System.Drawing.Color.Snow;
+            this.txtFecha.Font = new System.Drawing.Font("Century Schoolbook", 9F);
+            this.txtFecha.Location = new System.Drawing.Point(313, 267);
+            this.txtFecha.Name = "txtFecha";
+            this.txtFecha.Size = new System.Drawing.Size(222, 26);
+            this.txtFecha.TabIndex = 19;
+            // 
+            // lbId
+            // 
+            this.lbId.AutoSize = true;
+            this.lbId.Font = new System.Drawing.Font("Century Schoolbook", 10.8F, System.Drawing.FontStyle.Bold);
+            this.lbId.ForeColor = System.Drawing.Color.Snow;
+            this.lbId.Location = new System.Drawing.Point(25, 28);
+            this.lbId.Name = "lbId";
+            this.lbId.Size = new System.Drawing.Size(39, 23);
+            this.lbId.TabIndex = 20;
+            this.lbId.Text = "ID:";
+            // 
+            // txtId
+            // 
+            this.txtId.BackColor = System.Drawing.Color.Snow;
+            this.txtId.Font = new System.Drawing.Font("Century Schoolbook", 9F);
+            this.txtId.Location = new System.Drawing.Point(81, 28);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(100, 26);
+            this.txtId.TabIndex = 21;
+            // 
+            // txtPorFecha
+            // 
+            this.txtPorFecha.BackColor = System.Drawing.Color.Snow;
+            this.txtPorFecha.Font = new System.Drawing.Font("Century Schoolbook", 9F);
+            this.txtPorFecha.Location = new System.Drawing.Point(862, 483);
+            this.txtPorFecha.Name = "txtPorFecha";
+            this.txtPorFecha.Size = new System.Drawing.Size(197, 26);
+            this.txtPorFecha.TabIndex = 23;
+            // 
+            // cbProveedor
+            // 
+            this.cbProveedor.BackColor = System.Drawing.Color.Snow;
+            this.cbProveedor.Font = new System.Drawing.Font("Century Schoolbook", 9F);
+            this.cbProveedor.FormattingEnabled = true;
+            this.cbProveedor.Items.AddRange(new object[] {
+            "Panaderia Mayra",
+            "Carnes Chuy",
+            "Jumex",
+            "Kellogg\'s",
+            "CocaCola"});
+            this.cbProveedor.Location = new System.Drawing.Point(313, 317);
+            this.cbProveedor.Name = "cbProveedor";
+            this.cbProveedor.Size = new System.Drawing.Size(222, 26);
+            this.cbProveedor.TabIndex = 24;
+            // 
+            // cbPorProveedor
+            // 
+            this.cbPorProveedor.BackColor = System.Drawing.Color.Snow;
+            this.cbPorProveedor.Font = new System.Drawing.Font("Century Schoolbook", 9F);
+            this.cbPorProveedor.FormattingEnabled = true;
+            this.cbPorProveedor.Items.AddRange(new object[] {
+            "Panaderia Mayra",
+            "Carnes Chuy",
+            "Jumex",
+            "Kellogg\'s",
+            "CocaCola"});
+            this.cbPorProveedor.Location = new System.Drawing.Point(862, 408);
+            this.cbPorProveedor.Name = "cbPorProveedor";
+            this.cbPorProveedor.Size = new System.Drawing.Size(197, 26);
+            this.cbPorProveedor.TabIndex = 25;
+            // 
             // FrmAlmacendeAlimentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RosyBrown;
-            this.ClientSize = new System.Drawing.Size(1330, 514);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(1330, 563);
+            this.Controls.Add(this.cbPorProveedor);
+            this.Controls.Add(this.cbProveedor);
+            this.Controls.Add(this.txtPorFecha);
+            this.Controls.Add(this.txtId);
+            this.Controls.Add(this.lbId);
+            this.Controls.Add(this.txtFecha);
+            this.Controls.Add(this.txtMedida);
+            this.Controls.Add(this.lvProductos);
+            this.Controls.Add(this.txtExistencia);
+            this.Controls.Add(this.txtPrecio);
+            this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lbExistencia);
             this.Controls.Add(this.lbFecha);
             this.Controls.Add(this.lbProveedor);
@@ -323,6 +384,7 @@ namespace ExamenAOD
             this.Name = "FrmAlmacendeAlimentos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Almacen de Alimentos S.A de C.V";
+            this.Load += new System.EventHandler(this.FrmAlmacendeAlimentos_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -341,13 +403,10 @@ namespace ExamenAOD
         private System.Windows.Forms.Label lbProveedor;
         private System.Windows.Forms.Label lbFecha;
         private System.Windows.Forms.Label lbExistencia;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox txtPrecio;
+        private System.Windows.Forms.TextBox txtExistencia;
+        private System.Windows.Forms.ListView lvProductos;
         private System.Windows.Forms.ColumnHeader cId;
         private System.Windows.Forms.ColumnHeader cNombre;
         private System.Windows.Forms.ColumnHeader cPrecio;
@@ -355,6 +414,13 @@ namespace ExamenAOD
         private System.Windows.Forms.ColumnHeader cMedida;
         private System.Windows.Forms.ColumnHeader cFecha;
         private System.Windows.Forms.ColumnHeader cProveedor;
+        private System.Windows.Forms.TextBox txtMedida;
+        private System.Windows.Forms.TextBox txtFecha;
+        private System.Windows.Forms.Label lbId;
+        private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.TextBox txtPorFecha;
+        private System.Windows.Forms.ComboBox cbProveedor;
+        private System.Windows.Forms.ComboBox cbPorProveedor;
     }
 }
 
